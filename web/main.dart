@@ -1,10 +1,7 @@
-import 'package:angular2/bootstrap.dart';
-import 'package:angular2/angular2.dart';
+import 'package:angular/angular.dart';
 import 'package:ng2_dragula/dragula.dart';
 import 'dart:html';
 import 'dart:async';
-
-main() => bootstrap(App);
 
 @Component(
     selector: 'app',
@@ -28,15 +25,18 @@ class App {
     return container.classes.remove('ex-over');
   };
 
-  Copy copy = (Element el, Element source) =>
-      source == querySelector('#left-copy-1tomany');
+  Copy copy = (Element el, Element source) {
+    return source == querySelector('#left-copy-1tomany');
+  };
 
   Accepts accepts = (Element el, Element target, Element source,
-          Element sibling) =>
-      target != querySelector('#left-copy-1tomany');
+          Element sibling) {
+    return target != querySelector('#left-copy-1tomany');
+  };
 
-  Moves moves = (el, container, handle, sibling) =>
-      handle.className == 'handle';
+  Moves moves = (el, container, handle, sibling) {
+    return handle.className == 'handle';
+  };
 
   onClick(MouseEvent e, DivElement sortable) {
     DivElement target = e.target;
@@ -49,4 +49,8 @@ class App {
         () => target.text =
             target.text.replaceAll(new RegExp(r'\[click!\]'), ''));
   }
+}
+
+main() {
+  bootstrap(App);
 }

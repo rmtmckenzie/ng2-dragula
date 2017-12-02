@@ -1,6 +1,6 @@
 library components.dragula;
 
-import 'package:angular2/angular2.dart';
+import 'package:angular/angular.dart';
 import 'package:dragula/dragula_raw.dart';
 import 'dart:html';
 import 'package:js/js.dart';
@@ -40,7 +40,7 @@ class Dragula implements OnInit {
 
   Dragula(this.ref);
 
-  onInit() {
+  ngOnInit() {
     if (copy is Copy) copy = allowInterop(copy);
     if (accepts != null) accepts = allowInterop(accepts);
     if (moves != null) moves = allowInterop(moves);

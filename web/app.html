@@ -49,7 +49,7 @@
   <div class='parent'>
     <label for='hy'>There are plenty of events along the lifetime of a drag event. Check out <a
       href='https://github.com/bevacqua/dragula#drakeon-events'>all of them</a> in the docs!</label>
-    <dragula [on-drop]="onDrop" [on-drag]="onDrag" [on-over]="onOver" [on-out]="onOut" class='wrapper'>
+    <dragula (on-drop)="onDrop" (on-drag)="onDrag" (on-over)="onOver" (on-out)="onOut" class='wrapper'>
       <div id='left-events' class='container'>
         <div>As soon as you start dragging an element, a <code>drag</code> event is fired</div>
         <div>Whenever an element is cloned because <code>copy: true</code>, a <code>cloned</code> event fires</div>
@@ -76,7 +76,7 @@
     </dragula>
         <pre>
           <code>
-&lt;dragula [on-drop]=&quot;onDrop&quot; [on-drag]=&quot;onDrag&quot; [on-over]=&quot;onOver&quot; [on-out]=&quot;onOut&quot;&gt;
+&lt;dragula (on-drop)=&quot;onDrop&quot; (on-drag)=&quot;onDrag&quot; (on-over)=&quot;onOver&quot; (on-out)=&quot;onOut&quot;&gt;
   &lt;div id='left-events' class='container'&gt;
     ...
   &lt;/div&gt;
@@ -90,7 +90,7 @@
   <div class='parent'>
     <label for='hy'>Need to be able to quickly delete stuff when it spills out of the chosen containers? Note how you
       can easily sort the items in any containers by just dragging and dropping.</label>
-    <dragula [remove-on-spill]="true" class='wrapper'>
+    <dragula (remove-on-spill)="true" class='wrapper'>
       <div id='left-rm-spill' class='container'>
         <div>Anxious Cab Driver</div>
         <div>Thriving Venture</div>
@@ -106,7 +106,7 @@
     </dragula>
         <pre>
           <code>
-&lt;dragula [remove-on-spill]='true' class='wrapper'&gt;
+&lt;dragula (remove-on-spill)='true' class='wrapper'&gt;
   &lt;div id='left' class='container'&gt;
     ...
   &lt;/div&gt;
@@ -121,7 +121,7 @@
     <label for='hy'>By default, dropping an element outside of any known containers will keep the element in the last
       place it went over. You can make elements go back to origin if they're dropped outside of known containers,
       too.</label>
-    <dragula [revert-on-spill]='true' class='wrapper'>
+    <dragula (revert-on-spill)='true' class='wrapper'>
       <div id='left-rollbacks' class='container'>
         <div>Moving items between containers works as usual</div>
         <div>If you try to drop an item outside of any containers, though, it'll retain its original position</div>
@@ -138,7 +138,7 @@
     </dragula>
         <pre>
           <code>
-&lt;dragula [revert-on-spill]='true' class='wrapper'&gt;
+&lt;dragula (revert-on-spill)='true' class='wrapper'&gt;
   &lt;div id='left' class='container'&gt;
     ...
   &lt;/div&gt;
