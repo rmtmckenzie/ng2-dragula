@@ -9,8 +9,9 @@ dependencies:
   angular: ^4.0.0
   dragula: ^0.1.1
   js: ^0.6.1
-dev_dependencies:
+  # this has to be here or including this package will fail
   dart_to_js_script_rewriter: ^1.0.1
+dev_dependencies:
   browser: ^0.10.0
 transformers:
   - angular:
