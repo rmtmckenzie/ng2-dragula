@@ -7,14 +7,18 @@ environment:
   sdk: '>=1.13.0 <2.0.0'
 dependencies:
   angular: ^4.0.0
-  dragula: ^0.1.1
   js: ^0.6.1
   # this has to be here or including this package will fail
   dart_to_js_script_rewriter: ^1.0.1
 dev_dependencies:
   browser: ^0.10.0
+
 transformers:
   - angular:
       entry_points:
         - web/main.dart
   - dart_to_js_script_rewriter
+
+web:
+  compiler:
+    debug: dartdevc

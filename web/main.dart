@@ -1,7 +1,8 @@
+import 'dart:async';
+import 'dart:html';
+
 import 'package:angular/angular.dart';
 import 'package:ng2_dragula/dragula.dart';
-import 'dart:html';
-import 'dart:async';
 
 @Component(
     selector: 'app',
@@ -9,28 +10,22 @@ import 'dart:async';
     templateUrl: 'app.html',
     directives: const [Dragula])
 class App {
-  OnDrop onDrop = (Element el, _, __, ___) {
-    return el.classes.add('ex-moved');
-  };
+  OnDrop onDrop = (Element el, _, __, ___) => el.classes.add('ex-moved');
 
-  OnDrag onDrag = (Element el, _) {
-    return el.classes.remove('ex-moved');
-  };
+  OnDrag onDrag = (Element el, _) => el.classes.remove('ex-moved');
 
-  OnOver onOver = (_, Element container, __) {
-    return container.classes.add('ex-over');
-  };
+  OnOver onOver =
+      (_, Element container, __) => container.classes.add('ex-over');
 
-  OnOut onOut = (_, Element container, __) {
-    return container.classes.remove('ex-over');
-  };
+  OnOut onOut =
+      (_, Element container, __) => container.classes.remove('ex-over');
 
   Copy copy = (Element el, Element source) {
     return source == querySelector('#left-copy-1tomany');
   };
 
-  Accepts accepts = (Element el, Element target, Element source,
-          Element sibling) {
+  Accepts accepts =
+      (Element el, Element target, Element source, Element sibling) {
     return target != querySelector('#left-copy-1tomany');
   };
 

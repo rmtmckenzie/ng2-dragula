@@ -1,9 +1,9 @@
 library components.dragula;
 
 import 'package:angular/angular.dart';
-import 'package:dragula/dragula_raw.dart';
 import 'dart:html';
 import 'package:js/js.dart';
+import 'impl/dragula_raw.dart' as raw;
 
 @Component(
     selector: 'dragula',
@@ -41,7 +41,10 @@ class Dragula implements OnInit {
   Dragula(this.ref);
 
   ngOnInit() {
-    if (copy is Copy) copy = allowInterop(copy);
+    if (copy is Copy) {
+      Copy t = allowInterop(copy);
+      copy = t;
+    }
     if (accepts != null) accepts = allowInterop(accepts);
     if (moves != null) moves = allowInterop(moves);
     if (invalid != null) invalid = allowInterop(invalid);
@@ -49,19 +52,21 @@ class Dragula implements OnInit {
 
     containers.addAll((ref.nativeElement as Element).children.toList());
 
-    Drake drake = dragula(
-        [],
-        new DragulaOptions(
-            containers: containers,
-            direction: direction,
-            mirrorContainer: mirrorContainer,
-            removeOnSpill: removeOnSpill,
-            revertOnSpill: revertOnSpill,
-            copy: copy,
-            accepts: accepts,
-            invalid: invalid,
-            isContainer: isContainer,
-            moves: moves));
+    raw.Drake drake = raw.dragula(
+      [],
+      new raw.DragulaOptions(
+          containers: containers,
+          direction: direction,
+          mirrorContainer: mirrorContainer,
+          removeOnSpill: removeOnSpill,
+          revertOnSpill: revertOnSpill,
+          copy: copy,
+          accepts: accepts,
+          invalid: invalid,
+          isContainer: isContainer,
+          moves: moves
+      )
+    );
 
     if (onDrag != null) drake.on('drag', allowInterop(onDrag));
     if (onDragEnd != null) drake.on('dragend', allowInterop(onDragEnd));
@@ -77,14 +82,14 @@ class Dragula implements OnInit {
 typedef bool IsContainer(Element el);
 typedef bool Invalid(Element el, Element target);
 typedef bool Copy(Element el, Element source);
-typedef bool Accepts(
-    Element el, Element target, Element source, Element sibling);
+typedef bool Accepts(Element el, Element target, Element source,
+    Element sibling);
 typedef bool Moves(Element el, Element target, Element source, Element sibling);
 
 typedef void OnDrag(Element el, Element source);
 typedef void OnDragEnd(Element el);
-typedef void OnDrop(
-    Element el, Element target, Element source, Element sibling);
+typedef void OnDrop(Element el, Element target, Element source,
+    Element sibling);
 typedef void OnCancel(Element el, Element container, Element source);
 typedef void OnShadow(Element el, Element container, Element source);
 typedef void OnOver(Element el, Element container, Element source);

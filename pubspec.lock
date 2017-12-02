@@ -109,12 +109,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-  dragula:
-    description:
-      name: dragula
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.1"
   front_end:
     description:
       name: front_end
